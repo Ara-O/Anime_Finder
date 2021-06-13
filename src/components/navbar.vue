@@ -1,5 +1,5 @@
 <template>
   <ul>
-    <li>lol</li>
+    <li>Testing</li>
   </ul>
 </template>

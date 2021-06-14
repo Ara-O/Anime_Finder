@@ -3,7 +3,12 @@ import Searchpage from "../mainpages/Searchpage.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/search",
+    name: "Search",
+    component: Searchpage,
+  },
+  {
+    path: "/:pathMatch(.*)*",
     name: "Search",
     component: Searchpage,
   },

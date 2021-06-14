@@ -14,3 +14,11 @@ export default {
   },
 };
 </script>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
+body {
+  background: #e8e8e8;
+  font-family: Rajdhani;
+}
+</style>

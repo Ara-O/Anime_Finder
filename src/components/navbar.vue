@@ -10,10 +10,10 @@
 <style scoped>
 ul {
   list-style-type: none;
-  position: relative;
+  position: absolute;
   display: inline;
   top: 24.5px;
-  right: -848px;
+  right: 111px;
   font-size: 16.2px;
 }
 

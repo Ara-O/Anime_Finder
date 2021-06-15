@@ -172,8 +172,8 @@ input {
 
 .flexcont {
   display: flex;
-  width: 415px;
-  column-gap: 42px;
+  width: 376px;
+  column-gap: 29px;
 }
 
 .filterstext {

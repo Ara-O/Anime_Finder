@@ -1,8 +1,9 @@
 <template>
   <nav>
     <ul>
-      <li>Search</li>
-      <li>Anime News</li>
+      <router-link to="/search">Search</router-link>
+      <router-link to="/search">Anime News</router-link>
+      <!-- <li><router-link>Anime News</router-link></li> -->
     </ul>
   </nav>
 </template>
@@ -17,10 +18,13 @@ ul {
   font-size: 16.2px;
 }
 
-li {
+a {
   display: inline;
   margin-left: 155px;
   cursor: pointer;
   font-size: 17px;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
 }
 </style>

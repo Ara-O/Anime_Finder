@@ -1,7 +1,19 @@
 <template>
   <div class="mainpage">
     <searchSect></searchSect>
-    <component :is="renderedComponent"></component>
+    <div>
+      <h3 class="sorting">Most popular anime</h3>
+      <div class="result">
+        <component
+          :is="renderedComponent"
+          v-for="tes in test"
+          :key="tes.e"
+          :animename="tes.e"
+          :animedescr="tes.lola"
+          :anime="tes.ee"
+        ></component>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,7 +28,20 @@ export default {
     searchResults,
   },
   data() {
-    return {};
+    return {
+      test: [
+        {
+          lol: "e",
+          lola: "ee",
+          e: "ro",
+        },
+        {
+          lol: "ee",
+          lola: "eee",
+          e: "reo",
+        },
+      ],
+    };
   },
 
   computed: {
@@ -37,7 +62,18 @@ export default {
 <style scoped>
 .mainpage {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   margin-top: 95px;
+}
+
+.result {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 35px;
+}
+
+.sorting {
+  font-weight: 500;
 }
 </style>

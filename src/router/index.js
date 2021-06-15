@@ -9,7 +9,7 @@ const routes = [
   },
   {
     path: "/:pathMatch(.*)*",
-    name: "Search",
+    name: "Redirecting",
     component: Searchpage,
   },
 ];

@@ -2,15 +2,16 @@
   <div class="mainpage">
     <searchSect></searchSect>
     <div>
-      <h3 class="sorting">Most popular anime</h3>
+      <h3 class="sorting">Popular animes</h3>
       <div class="result">
         <component
           :is="renderedComponent"
-          v-for="tes in test"
-          :key="tes.e"
-          :animename="tes.e"
-          :animedescr="tes.lola"
-          :anime="tes.ee"
+          v-for="animelist in startingList"
+          :key="animelist.mal_id"
+          :animename="animelist.title"
+          :animedescr="animelist.synopsis"
+          :animeimg="animelist.image_url"
+          :anime="animelist"
         ></component>
       </div>
     </div>
@@ -21,6 +22,7 @@
 import searchSect from "../components/searchsection.vue";
 import searchResults from "../components/searchResults.vue";
 import animeNotFound from "../components/animeNotFound.vue";
+const axios = require("axios").default;
 export default {
   name: "HelloWorld",
   components: {
@@ -29,18 +31,7 @@ export default {
   },
   data() {
     return {
-      test: [
-        {
-          lol: "e",
-          lola: "ee",
-          e: "ro",
-        },
-        {
-          lol: "ee",
-          lola: "eee",
-          e: "reo",
-        },
-      ],
+      startingList: [],
     };
   },
 
@@ -55,6 +46,19 @@ export default {
       }
     },
   },
+
+  mounted() {
+    // axios.get(`https://api.jikan.moe/v3/search/anime?q=${this.chosenAnime.name}&page=${this.currentpage}&genre=${this.chosenAnime.genre}&type=${this.chosenAnime.type}&status=${this.chosenAnime.status}&rated=${this.chosenAnime.rating}`);
+    axios
+      .get(`https://api.jikan.moe/v3/search/anime?q=&order_by=score&sort=desc`)
+      .then((res) => {
+        console.log(res);
+        this.startingList = res.data.results.slice(1);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };
 </script>
 
@@ -64,13 +68,33 @@ export default {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-top: 95px;
+  margin-top: 70px;
 }
 
 .result {
   display: flex;
   justify-content: space-around;
-  column-gap: 35px;
+  column-gap: 21px;
+  width: 934px;
+  flex-wrap: wrap;
+  height: 670px;
+  overflow: auto;
+}
+
+.result::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+}
+
+.result::-webkit-scrollbar-button {
+  background: transparent;
+  width: 10px;
+}
+
+.result::-webkit-scrollbar-thumb {
+  background: #252525;
+  width: 10px;
+  border-radius: 4px;
 }
 
 .sorting {

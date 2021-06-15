@@ -2,7 +2,7 @@
   <div class="mainsect">
     <div class="resultcont">
       <div class="resultimg">
-        <img src="" alt="" />
+        <img :src="animeimg" alt="Anime Image" />
       </div>
       <div>
         <h3 class="resultname">{{ animename }}</h3>
@@ -23,7 +23,7 @@
 
 .resultimg {
   border: none;
-  height: 222px;
+  height: 317px;
   width: 210px;
   border-radius: 10px;
   background: white;
@@ -33,12 +33,14 @@
 .resultcont {
   display: flex;
   flex-direction: column;
+  width: 288px;
 }
 
 .resultname {
   font-weight: 500;
   font-size: 20px;
   margin-top: 31px;
+  width: 221px;
 }
 
 .resulttext {
@@ -59,10 +61,17 @@
   font-family: "Rajdhani";
   cursor: pointer;
 }
+
+img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+  border-radius: 4px;
+}
 </style>
 
 <script>
 export default {
-  props: ["animename", "animedescr", "anime"],
+  props: ["animename", "animedescr", "animeimg", "anime"],
 };
 </script>

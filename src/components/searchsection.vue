@@ -98,6 +98,7 @@
   font-size: 29px;
   font-weight: 500;
   margin-bottom: 37px;
+  margin-top: 132px;
 }
 
 input {

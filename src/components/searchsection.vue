@@ -89,7 +89,7 @@
       </div>
     </div>
     <h4 class="filterstext">More filters</h4>
-    <button class="searchbtn" @click="search">Start Search</button>
+    <button class="searchbtn" @click="startsearch">Start Search</button>
   </div>
 </template>
 
@@ -199,6 +199,7 @@ input {
 
 <script>
 export default {
+  emits: ["initiatingsearch"],
   data() {
     return {
       chosenAnime: {
@@ -212,8 +213,10 @@ export default {
   },
 
   methods: {
-    search() {
-      console.log(this.chosenAnime);
+    startsearch() {
+      // console.log(this.chosenAnime);
+      this.$emit("initiatingsearch", this.chosenAnime);
+      this.$store.state.animeSearch = this.chosenAnime;
     },
   },
 };

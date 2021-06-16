@@ -9,7 +9,9 @@
         <h5 class="resulttext">
           {{ animedescr }}
         </h5>
-        <button class="interested-btn">I'm Interested</button>
+        <button class="interested-btn" @click="showSelectedAnime">
+          I'm Interested
+        </button>
       </div>
     </div>
   </div>
@@ -73,5 +75,11 @@ img {
 <script>
 export default {
   props: ["animename", "animedescr", "animeimg", "anime"],
+
+  methods: {
+    showSelectedAnime() {
+      console.log(this.anime);
+    },
+  },
 };
 </script>

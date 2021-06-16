@@ -9,9 +9,11 @@
         <h5 class="resulttext">
           {{ animedescr }}
         </h5>
-        <button class="interested-btn" @click="showSelectedAnime">
-          I'm Interested
-        </button>
+        <router-link to="/selectedanime">
+          <button class="interested-btn" @click="showSelectedAnime">
+            I'm Interested
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -79,6 +81,8 @@ export default {
   methods: {
     showSelectedAnime() {
       console.log(this.anime);
+
+      this.$store.state.animeSearch = this.anime;
     },
   },
 };

@@ -98,7 +98,7 @@
   font-size: 29px;
   font-weight: 500;
   margin-bottom: 37px;
-  margin-top: 110px;
+  margin-top: 100px;
 }
 
 input {
@@ -119,7 +119,7 @@ input {
   font-size: 13px;
   padding: 12px 8px 12px 84px;
   background: #fff;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 9px;
   overflow: hidden;
   position: relative;
@@ -131,7 +131,7 @@ input {
   font-size: 13px;
   padding: 12px 8px 12px 25px;
   background: #fff;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 9px;
   overflow: hidden;
   position: relative;

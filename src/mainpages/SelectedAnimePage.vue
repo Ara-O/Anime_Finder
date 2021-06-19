@@ -45,15 +45,13 @@
       <div class="animenews">
         <h3 class="latestnewstext">Latest {{ anime.title }} news</h3>
         <div class="newssect">
-          <div class="news">
-            <news
-              v-for="animenew in animenews"
-              :key="animenew.id"
-              :description="animenew.snippet"
-              :title="animenew.title"
-              :image="animenew.image.url"
-            ></news>
-          </div>
+          <news
+            v-for="animenew in animenews"
+            :key="animenew.id"
+            :description="animenew.snippet"
+            :title="animenew.title"
+            :link="animenew.url"
+          ></news>
         </div>
       </div>
     </section>
@@ -96,38 +94,43 @@ export default {
     },
   },
 
+  methods: {
+    getNews() {
+      var that = this;
+      const options = {
+        method: "GET",
+        url: "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/WebSearchAPI",
+        params: {
+          q: that.anime.title,
+          pageNumber: "1",
+          pageSize: "10",
+          autoCorrect: "true",
+        },
+        headers: {
+          "x-rapidapi-key":
+            "af5d8d5742msh534d84026431d68p158043jsn6b112d5a470f",
+          "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+        },
+      };
+
+      axios
+        .request(options)
+        .then(function (response) {
+          let data = response.data.value;
+          // const filtereddata = data.filter((anime) => anime.image.url);
+          that.animenews = data;
+          console.log(data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+  },
+
   mounted() {
     const animeData = this.$cookies.get("selectedAnime");
     this.anime = animeData;
-
-    var that = this;
-    const options = {
-      method: "GET",
-      url: "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI",
-      params: {
-        q: that.anime.title,
-        pageNumber: "1",
-        pageSize: "10",
-        autoCorrect: "true",
-        withThumbnails: "true",
-        fromPublishedDate: "null",
-        toPublishedDate: "null",
-      },
-      headers: {
-        "x-rapidapi-key": "af5d8d5742msh534d84026431d68p158043jsn6b112d5a470f",
-        "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        that.animenews = response.data.value;
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    this.getNews();
   },
 };
 </script>
@@ -215,12 +218,14 @@ h3.title {
 .dates {
   font-size: 16px;
   font-weight: 400;
+  text-align: left;
 }
 .summ-1_extension h4 {
   font-weight: 500;
   margin-top: 0px;
   font-size: 20px;
   margin-bottom: 19px;
+  text-align: left;
 }
 
 .hr {
@@ -295,6 +300,11 @@ h3.episodeno.percent {
 
 .animenews {
   width: 100%;
+}
+
+.news {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .newsect {

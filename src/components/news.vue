@@ -1,20 +1,18 @@
 <template>
   <div class="news">
-    <div class="news--left">
-      <img :src="image" alt="" class="newsimg" />
-      <h5 class="newsdescription">{{ title }}</h5>
-    </div>
+    <div class="news--left"></div>
     <div class="news--right">
-      <h5 class="newsdescription--text">
-        {{ description }}
-      </h5>
-      <button class="readmore">Read More</button>
+      <h5 class="newsdescription">{{ title }}</h5>
+      <h5 class="newsdescription--text" v-html="description"></h5>
+      <a :href="link" target="_blank"
+        ><button class="readmore">Read More</button></a
+      >
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ["description", "title", "image"],
+  props: ["description", "title", "image", "link"],
 };
 </script>
 
@@ -22,12 +20,18 @@ export default {
 .news {
   display: flex;
   justify-content: center;
-
+  justify-content: left;
+  padding-left: 33px;
   margin-bottom: 40px;
+  column-gap: 41px;
 }
 
 .news--left {
   width: 162px;
+  border-radius: 7px;
+  background: white;
+  border: none;
+  box-shadow: 0px 0px 7px #5d5d5d;
 }
 
 .newsimg {
@@ -37,7 +41,7 @@ export default {
 }
 
 .newsdescription--text {
-  width: 208px;
+  width: 445px;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.4px;
@@ -68,11 +72,13 @@ export default {
 .newsdescription {
   font-size: 15px;
   font-weight: 600;
-  margin-top: 9px;
+  margin-bottom: -1px;
 }
-
 .news--right {
   text-align: left;
   margin-top: -19px;
+}
+button {
+  cursor: pointer;
 }
 </style>

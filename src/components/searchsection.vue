@@ -90,6 +90,9 @@
     </div>
     <h4 class="filterstext">More filters</h4>
     <button class="searchbtn" @click="startsearch">Start Search</button>
+    <h3 v-if="$store.state.searchinprogress" style="font-weight: 400">
+      Loading!
+    </h3>
   </div>
 </template>
 

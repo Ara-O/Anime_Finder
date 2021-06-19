@@ -1,6 +1,7 @@
 <template>
   <div class="mainpage">
     <searchSect @initiatingsearch="startSearch"></searchSect>
+
     <div>
       <h3 class="sorting">{{ descriptiontext }}</h3>
       <div class="result">
@@ -53,8 +54,11 @@ export default {
     },
 
     startSearch(chosenAnime) {
+      this.$store.state.searchinprogress = true;
       let obj = chosenAnime;
       let { name, genre, preferredtype, status, rating } = obj;
+      // Setting cookies to the value of what is being searched
+      this.$cookies.set("searchinganime", obj);
 
       if (name.trim() === "") {
         axios
@@ -63,6 +67,7 @@ export default {
 `
           )
           .then((res) => {
+            this.$store.state.searchinprogress = false;
             this.$store.state.animefound = true;
             this.descriptiontext = "Sorting by popular shows";
             this.startingList = res.data.results.slice(1);
@@ -78,6 +83,7 @@ export default {
             `https://api.jikan.moe/v3/search/anime?q=${name}&page=1&genre=${genre}&type=${preferredtype}&status=${status}&rated=${rating}`
           )
           .then((res) => {
+            this.$store.state.searchinprogress = false;
             this.$store.state.animefound = true;
             this.descriptiontext = "Search Results";
             this.startingList = res.data.results;
@@ -102,16 +108,23 @@ export default {
   },
 
   mounted() {
-    // axios.get(`https://api.jikan.moe/v3/search/anime?q=${this.chosenAnime.name}&page=${this.currentpage}&genre=${this.chosenAnime.genre}&type=${this.chosenAnime.type}&status=${this.chosenAnime.status}&rated=${this.chosenAnime.rating}`);
-    axios
-      .get(`https://api.jikan.moe/v3/search/anime?q=&order_by=score&sort=desc`)
-      .then((res) => {
-        // console.log(res);
-        this.startingList = res.data.results.slice(1);
-      })
-      .catch((err) => {
-        this.handleError(err);
-      });
+    // Searching for if someone has started their search, if not, then it loads default. If so, when the page loads
+    //it gets the last searched value and shows it as the results
+    // this.$cookies.set("searchinganime", "");
+    if (this.$cookies.get("searchinganime")) {
+      this.startSearch(this.$cookies.get("searchinganime"));
+    } else {
+      axios
+        .get(
+          `https://api.jikan.moe/v3/search/anime?q=&order_by=score&sort=desc`
+        )
+        .then((res) => {
+          this.startingList = res.data.results.slice(1);
+        })
+        .catch((err) => {
+          this.handleError(err);
+        });
+    }
   },
 };
 </script>

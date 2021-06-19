@@ -21,7 +21,7 @@ export default {
   display: flex;
   justify-content: center;
   justify-content: left;
-  padding-left: 33px;
+  padding-left: 94px;
   margin-bottom: 40px;
   column-gap: 41px;
 }
@@ -52,12 +52,15 @@ export default {
   height: 43px;
   width: 104px;
   border: none;
-  background: black;
+  background: #252525;
   color: white;
   border-radius: 7px;
   font-family: "Rajdhani";
 }
 
+.readmore:hover {
+  background: black;
+}
 .newssect {
   display: flex;
   flex-wrap: wrap;
@@ -73,6 +76,8 @@ export default {
   font-size: 15px;
   font-weight: 600;
   margin-bottom: -1px;
+  width: 500px;
+  line-height: 23px;
 }
 .news--right {
   text-align: left;

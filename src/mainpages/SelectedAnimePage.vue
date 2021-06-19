@@ -2,12 +2,17 @@
   <div class="mainsect">
     <section class="section--left">
       <div class="anime--desc__sect">
+        <button class="button back-btn" @click="$router.go(-1)">Go back</button>
         <div class="animeimg">
           <img :src="anime.image_url" alt="" class="animeimg--img" />
         </div>
         <h3 class="title">{{ anime.title }}</h3>
         <h4 class="descrheader">Description</h4>
         <h5 class="descriptiontext">{{ anime.synopsis }}</h5>
+
+        <a :href="anime.url" target="_blank" class="readmore"
+          ><button class="button">Read More</button></a
+        >
       </div>
     </section>
     <section class="section--right">
@@ -44,7 +49,17 @@
       </div>
       <div class="animenews">
         <h3 class="latestnewstext">Latest {{ anime.title }} news</h3>
-        <div class="newssect">
+        <div v-if="newsloaded">
+          <h3 class="loading">
+            Loading news
+            <img
+              src="../assets/loading.gif"
+              alt="loading animation"
+              class="loadinggif"
+            />
+          </h3>
+        </div>
+        <div class="newssect" v-else>
           <news
             v-for="animenew in animenews"
             :key="animenew.id"
@@ -72,6 +87,7 @@ export default {
       anime: this.$store.state.animeSearch,
       animename: "",
       animenews: [],
+      newsloaded: true,
     };
   },
 
@@ -118,6 +134,7 @@ export default {
         .then(function (response) {
           let data = response.data.value;
           // const filtereddata = data.filter((anime) => anime.image.url);
+          that.newsloaded = false;
           that.animenews = data;
           console.log(data);
         })
@@ -130,12 +147,16 @@ export default {
   mounted() {
     const animeData = this.$cookies.get("selectedAnime");
     this.anime = animeData;
+    console.log(this.anime);
     this.getNews();
   },
 };
 </script>
 
 <style scoped>
+.loading {
+  font-weight: 500;
+}
 .mainsect {
   display: flex;
   justify-content: space-between;
@@ -181,7 +202,7 @@ h3.title {
   box-shadow: 0px 0px 7px #5d5d5d;
   object-fit: cover;
   height: 300px;
-  width: inherit;
+  width: 212px;
 }
 
 .section--right {
@@ -293,8 +314,8 @@ h3.episodeno.percent {
 
 .latestnewstext {
   font-weight: 500;
-  font-size: 21px;
-  margin: 30px 0px;
+  font-size: 19px;
+  margin: 35px 0px;
   margin-bottom: 53px;
 }
 
@@ -311,5 +332,41 @@ h3.episodeno.percent {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.readmore {
+  height: 40px;
+  width: 110px;
+  background: #252525;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-family: "Rajdhani";
+  cursor: pointer;
+}
+
+.button {
+  height: 40px;
+  width: 110px;
+  background: #252525;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-family: "Rajdhani";
+  cursor: pointer;
+}
+
+.button:hover {
+  background: black;
+}
+.back-btn {
+  position: absolute;
+  top: 28px;
+  left: 36px;
+}
+
+.loadinggif {
+  width: 15px;
+  padding-top: 7px;
 }
 </style>

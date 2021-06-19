@@ -98,7 +98,7 @@
   font-size: 29px;
   font-weight: 500;
   margin-bottom: 37px;
-  margin-top: 132px;
+  margin-top: 110px;
 }
 
 input {
@@ -216,7 +216,6 @@ export default {
     startsearch() {
       // console.log(this.chosenAnime);
       this.$emit("initiatingsearch", this.chosenAnime);
-      this.$store.state.animeSearch = this.chosenAnime;
     },
   },
 };

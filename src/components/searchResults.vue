@@ -66,6 +66,9 @@
   cursor: pointer;
 }
 
+.interested-btn:hover {
+  background: black;
+}
 img {
   width: inherit;
   height: inherit;
@@ -77,12 +80,17 @@ img {
 <script>
 export default {
   props: ["animename", "animedescr", "animeimg", "anime"],
-
+  data() {
+    return {
+      dataofanime: "",
+    };
+  },
   methods: {
     showSelectedAnime() {
-      console.log(this.anime);
-
-      this.$store.state.animeSearch = this.anime;
+      this.dataofanime = this.anime;
+      const target_copy = Object.assign({}, this.dataofanime);
+      this.$store.state.animeSearch = target_copy;
+      this.$cookies.set("selectedAnime", this.$store.state.animeSearch);
     },
   },
 };

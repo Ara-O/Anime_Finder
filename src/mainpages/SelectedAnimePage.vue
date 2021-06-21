@@ -209,14 +209,32 @@ h3.title {
   width: 896px;
   border: none;
   box-shadow: 0px 0px 7px #5d5d5d;
-  height: 83vh;
+  height: 117vh;
   border-bottom: white;
   background: white;
   border-radius: 7px;
   margin-right: 35px;
-  height: auto;
+
   text-align: center;
   overflow: auto;
+}
+
+.section--right::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+}
+
+.section--right::-webkit-scrollbar-button {
+  background: transparent;
+  width: 10px;
+  height: 264px;
+  margin-right: 30px;
+}
+
+.section--right::-webkit-scrollbar-thumb {
+  background: #202020;
+  width: 10px;
+  border-radius: 4px;
 }
 
 .summarysect {

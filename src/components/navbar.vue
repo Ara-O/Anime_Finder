@@ -2,7 +2,7 @@
   <nav>
     <ul>
       <router-link to="/search">Search</router-link>
-      <router-link to="/search">Anime News</router-link>
+      <router-link to="/news">Anime News</router-link>
       <!-- <li><router-link>Anime News</router-link></li> -->
     </ul>
   </nav>

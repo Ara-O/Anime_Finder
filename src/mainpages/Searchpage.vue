@@ -22,6 +22,13 @@
           :animeimg="animelist.image_url"
           :anime="animelist"
         ></search-results> -->
+        <img
+          src="https://www.pngarts.com/files/2/Next-Download-PNG-Image.png"
+          class="nextarrow"
+          alt=""
+          @click="nextResults"
+          v-if="startingList"
+        />
       </div>
     </div>
   </div>
@@ -42,6 +49,7 @@ export default {
     return {
       descriptiontext: "Popular Animes",
       startingList: [],
+      page: 1,
     };
   },
 
@@ -63,7 +71,7 @@ export default {
       if (name.trim() === "") {
         axios
           .get(
-            `https://api.jikan.moe/v3/search/anime?q=&order_by=score&sort=desc&page=1}&rated=${rating}&genre=${genre}&type=${preferredtype}&status=${status}
+            `https://api.jikan.moe/v3/search/anime?q=&order_by=score&sort=desc&page=${this.page}&rated=${rating}&genre=${genre}&type=${preferredtype}&status=${status}
 `
           )
           .then((res) => {
@@ -80,7 +88,7 @@ export default {
       if (name) {
         axios
           .get(
-            `https://api.jikan.moe/v3/search/anime?q=${name}&page=1&genre=${genre}&type=${preferredtype}&status=${status}&rated=${rating}`
+            `https://api.jikan.moe/v3/search/anime?q=${name}&page=${this.page}&genre=${genre}&type=${preferredtype}&status=${status}&rated=${rating}`
           )
           .then((res) => {
             this.$store.state.searchinprogress = false;
@@ -92,6 +100,10 @@ export default {
             this.handleError(err);
           });
       }
+    },
+    nextResults() {
+      this.page++;
+      this.startSearch(this.$cookies.get("searchinganime"));
     },
   },
 
@@ -166,5 +178,14 @@ export default {
 
 .sorting {
   font-weight: 500;
+}
+
+.nextarrow {
+  width: 54px;
+  position: relative;
+  right: 58px;
+  height: 55px;
+  top: 152px;
+  cursor: pointer;
 }
 </style>

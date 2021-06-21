@@ -21,13 +21,13 @@ export default {
   display: flex;
   justify-content: center;
   justify-content: left;
-  padding-left: 94px;
+  padding-left: 74px;
   margin-bottom: 40px;
   column-gap: 41px;
 }
 
 .news--left {
-  width: 162px;
+  width: 192px;
   border-radius: 7px;
   background: white;
   border: none;
@@ -42,8 +42,9 @@ export default {
 
 .newsdescription--text {
   width: 445px;
-  font-weight: 400;
-  line-height: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 26px;
   letter-spacing: 0.4px;
   text-align: left;
 }
@@ -73,7 +74,7 @@ export default {
 }
 
 .newsdescription {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: -1px;
   width: 500px;
@@ -82,6 +83,7 @@ export default {
 .news--right {
   text-align: left;
   margin-top: -19px;
+  padding-bottom: 24px;
 }
 button {
   cursor: pointer;

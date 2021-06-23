@@ -5,6 +5,7 @@ export default createStore({
     animefound: true,
     animeSearch: [],
     searchinprogress: true,
+    currentList: false,
   },
   mutations: {},
   actions: {},

@@ -27,7 +27,7 @@
           class="nextarrow"
           alt=""
           @click="nextResults"
-          v-if="startingList"
+          v-if="$store.state.currentList"
         />
       </div>
     </div>
@@ -55,14 +55,17 @@ export default {
 
   methods: {
     handleError(err) {
+      this.$store.state.currentList = false;
       this.startingList = ["err"];
       this.$store.state.animefound = false;
       this.descriptiontext = "";
+      this.$store.state.searchinprogress = false;
       console.log(err);
     },
 
     startSearch(chosenAnime) {
       this.$store.state.searchinprogress = true;
+
       let obj = chosenAnime;
       let { name, genre, preferredtype, status, rating } = obj;
       // Setting cookies to the value of what is being searched
@@ -79,6 +82,7 @@ export default {
             this.$store.state.animefound = true;
             this.descriptiontext = "Sorting by popular shows";
             this.startingList = res.data.results.slice(1);
+            this.$store.state.currentList = true;
           })
           .catch((err) => {
             this.handleError(err);
@@ -95,6 +99,7 @@ export default {
             this.$store.state.animefound = true;
             this.descriptiontext = "Search Results";
             this.startingList = res.data.results;
+            this.$store.state.currentList = true;
           })
           .catch((err) => {
             this.handleError(err);
@@ -104,6 +109,10 @@ export default {
     nextResults() {
       this.page++;
       this.startSearch(this.$cookies.get("searchinganime"));
+      window.document.querySelector(".result").scroll({
+        top: 0,
+        behavior: "smooth",
+      });
     },
   },
 

@@ -215,6 +215,10 @@ export default {
     };
   },
 
+  mounted() {
+    this.$store.state.searchinprogress = false;
+  },
+
   methods: {
     startsearch() {
       // console.log(this.chosenAnime);

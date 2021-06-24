@@ -2,12 +2,18 @@ import { createRouter, createWebHistory } from "vue-router";
 import Searchpage from "../mainpages/Searchpage.vue";
 import News from "../mainpages/AnimeNewsPage.vue";
 import SelectedAnimePage from "../mainpages/SelectedAnimePage.vue";
+import latestReleases from "../mainpages/latestReleasesPage.vue";
 
 const routes = [
   {
     path: "/search",
     name: "Search",
     component: Searchpage,
+  },
+  {
+    path: "/latestreleases",
+    name: "Latest Releases",
+    component: latestReleases,
   },
   {
     path: "/selectedanime",

@@ -106,7 +106,12 @@ export default {
     },
     getEndDate() {
       const newdate = new Date(this.anime.end_date);
-      return String(newdate).slice(0, -42);
+      let date2 = String(newdate).slice(0, -42);
+      if (date2 === "Wed Dec 31 1969") {
+        return "Still going!";
+      } else {
+        return date2;
+      }
     },
   },
 

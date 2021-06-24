@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import test from "../modules/Test";
 import searchSect from "../components/searchsection.vue";
 import searchResults from "../components/searchResults.vue";
 import animeNotFound from "../components/animeNotFound.vue";
@@ -54,6 +55,17 @@ export default {
   },
 
   methods: {
+    updateState(text) {
+      this.$store.state.searchinprogress = false;
+      this.$store.state.animefound = true;
+      this.$store.state.currentList = true;
+      this.descriptiontext = text;
+      window.document.querySelector(".result").scroll({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+
     handleError(err) {
       this.$store.state.currentList = false;
       this.startingList = ["err"];
@@ -65,24 +77,19 @@ export default {
 
     startSearch(chosenAnime) {
       this.$store.state.searchinprogress = true;
-
       let obj = chosenAnime;
       let { name, genre, preferredtype, status, rating } = obj;
       // Setting cookies to the value of what is being searched
       this.$cookies.set("searchinganime", obj);
-
+      //Searching for empty state
       if (name.trim() === "") {
         axios
           .get(
-            `https://api.jikan.moe/v3/search/anime?q=&order_by=score&sort=desc&page=${this.page}&rated=${rating}&genre=${genre}&type=${preferredtype}&status=${status}
-`
+            `https://api.jikan.moe/v3/search/anime?q=&order_by=score&sort=desc&page=${this.page}&rated=${rating}&genre=${genre}&type=${preferredtype}&status=${status}`
           )
           .then((res) => {
-            this.$store.state.searchinprogress = false;
-            this.$store.state.animefound = true;
-            this.descriptiontext = "Sorting by popular shows";
+            this.updateState("Sorting by popular shows");
             this.startingList = res.data.results.slice(1);
-            this.$store.state.currentList = true;
           })
           .catch((err) => {
             this.handleError(err);
@@ -95,17 +102,15 @@ export default {
             `https://api.jikan.moe/v3/search/anime?q=${name}&page=${this.page}&genre=${genre}&type=${preferredtype}&status=${status}&rated=${rating}`
           )
           .then((res) => {
-            this.$store.state.searchinprogress = false;
-            this.$store.state.animefound = true;
-            this.descriptiontext = "Search Results";
+            this.updateState("Search Results");
             this.startingList = res.data.results;
-            this.$store.state.currentList = true;
           })
           .catch((err) => {
             this.handleError(err);
           });
       }
     },
+
     nextResults() {
       this.page++;
       this.startSearch(this.$cookies.get("searchinganime"));
@@ -132,6 +137,7 @@ export default {
     // Searching for if someone has started their search, if not, then it loads default. If so, when the page loads
     //it gets the last searched value and shows it as the results
     // this.$cookies.set("searchinganime", "");
+
     if (this.$cookies.get("searchinganime")) {
       this.startSearch(this.$cookies.get("searchinganime"));
     } else {
@@ -165,7 +171,7 @@ export default {
   column-gap: 21px;
   width: 934px;
   flex-wrap: wrap;
-  height: 582px;
+  height: 85vh;
   overflow: auto;
 }
 

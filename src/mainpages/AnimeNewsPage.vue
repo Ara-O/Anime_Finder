@@ -13,6 +13,7 @@
           <button class="button" @click="searchNews">Search</button>
         </div>
         <div class="newsblock--sect">
+          <h3 v-if="loading" style="font-weight: 400">Loading...</h3>
           <newsArticle
             v-for="animeNew in animeNews"
             :key="animeNew.id"
@@ -65,6 +66,7 @@ export default {
       newsSearchNotStarted: true,
       selectedArticle: {},
       page: 1,
+      loading: true,
     };
   },
   computed: {
@@ -84,11 +86,13 @@ export default {
           )}&pageSize=100`
         )
         .then((res) => {
+          this.loading = false;
           console.log(res.data.articles);
           this.animeNews = res.data.articles;
           // this.newsSearchNotStarted = false;
         })
         .catch((err) => {
+          this.loading = false;
           console.log(err);
         });
     },
@@ -110,6 +114,7 @@ export default {
         )}&pageSize=100`
       )
       .then((res) => {
+        that.loading = false;
         that.animeNews = res.data.articles;
         console.log(res.data.articles);
       })

@@ -1,0 +1,47 @@
+.phonenav {
+    display: none;
+  }
+  
+  ul {
+    list-style-type: none;
+    position: absolute;
+    display: inline;
+    top: 24.5px;
+    right: 111px;
+    font-size: 16.2px;
+  }
+  
+  a {
+    display: inline;
+    margin-left: 155px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    color: black;
+    text-decoration: none;
+  }
+  
+  @media (max-width: 883px) {
+    .link {
+      display: none;
+    }
+    a {
+      margin-left: 109px;
+      right: 0px;
+    }
+  
+    .first-text {
+      margin-top: 11px;
+    }
+  
+    .phonenav {
+      display: block;
+      height: 50px;
+      width: 50px;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      background: linear-gradient(45deg, gray, #979797);
+      border-bottom-left-radius: 5px;
+    }
+  }

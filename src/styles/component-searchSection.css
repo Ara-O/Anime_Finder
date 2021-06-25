@@ -1,0 +1,115 @@
+.first-text {
+  font-size: 29px;
+  font-weight: 500;
+  margin-bottom: 37px;
+  margin-top: 100px;
+}
+
+input {
+  font-family: Rajdhani;
+  text-align: center;
+  font-size: 16px;
+}
+
+.inputfield {
+  height: 46px;
+  width: 330px;
+  border-radius: 9px;
+  border: 0px;
+  box-shadow: 0px 0px 5px #d5d5d5;
+}
+
+.search_categories {
+  font-size: 13px;
+  padding: 12px 8px 12px 84px;
+  background: #fff;
+  /* border: 1px solid #ccc; */
+  border-radius: 9px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 23px;
+  box-shadow: 0px 0px 5px #d5d5d5;
+  width: 221px;
+}
+.search_categories-2 {
+  font-size: 13px;
+  padding: 12px 8px 12px 25px;
+  background: #fff;
+  /* border: 1px solid #ccc; */
+  border-radius: 9px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 23px;
+  box-shadow: 0px 0px 5px #d5d5d5;
+  width: 221px;
+}
+
+.select {
+  width: 123%;
+  background: url("../assets/dropdown.png") no-repeat;
+  background-position: 76% center;
+  background-size: 14px;
+}
+
+.select select {
+  background: transparent;
+  font-size: 16px;
+  line-height: 1;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  width: 90%;
+  position: relative;
+  z-index: 10;
+  outline: none;
+  font-family: Rajdhani;
+  font-size: 16px;
+  color: #737373;
+}
+
+.select .select2 {
+  width: 95%;
+}
+
+#select_categories:focus-visible {
+  outline: rebeccapurple;
+}
+
+.flexcont {
+  display: flex;
+  width: 376px;
+  column-gap: 29px;
+}
+
+.filterstext {
+  font-weight: 400;
+}
+
+.searchbtn {
+  height: 46px;
+  width: 110px;
+  background: #252525;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-family: "Rajdhani";
+  cursor: pointer;
+}
+
+.searchbtn:hover {
+  background: black;
+}
+
+@media (max-width: 883px) {
+  .first-text {
+    margin-top: 68px;
+  }
+
+  .filterstext {
+    display: none;
+  }
+
+  .searchbtn {
+    margin-top: 20px;
+  }
+}

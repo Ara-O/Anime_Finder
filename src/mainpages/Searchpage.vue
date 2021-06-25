@@ -1,6 +1,6 @@
 <template>
   <div class="mainpage">
-    <searchSect @initiatingsearch="startSearch"></searchSect>
+    <searchSect @initiatingsearch="startSearch" class="searchSect"></searchSect>
 
     <div>
       <h3 class="sorting">{{ descriptiontext }}</h3>
@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import test from "../modules/Test";
 import searchSect from "../components/searchsection.vue";
 import searchResults from "../components/searchResults.vue";
 import animeNotFound from "../components/animeNotFound.vue";
@@ -157,50 +156,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.mainpage {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  margin-top: 70px;
-}
-
-.result {
-  display: flex;
-  justify-content: space-around;
-  column-gap: 21px;
-  width: 934px;
-  flex-wrap: wrap;
-  height: 85vh;
-  overflow: auto;
-}
-
-.result::-webkit-scrollbar {
-  background: transparent;
-  width: 10px;
-}
-
-.result::-webkit-scrollbar-button {
-  background: transparent;
-  width: 10px;
-}
-
-.result::-webkit-scrollbar-thumb {
-  background: #252525;
-  width: 10px;
-  border-radius: 4px;
-}
-
-.sorting {
-  font-weight: 500;
-}
-
-.nextarrow {
-  width: 54px;
-  position: relative;
-  right: 58px;
-  height: 55px;
-  top: 152px;
-  cursor: pointer;
-}
-</style>
+<style scoped src="../styles/searchPage.css"></style>

@@ -19,63 +19,7 @@
   </div>
 </template>
 
-<style scoped>
-.mainsect {
-  width: auto;
-  margin-top: 18px;
-}
-
-.resultimg {
-  border: none;
-  height: 317px;
-  width: 210px;
-  border-radius: 10px;
-  background: white;
-  box-shadow: 0px 0px 9px #959595;
-}
-
-.resultcont {
-  display: flex;
-  flex-direction: column;
-  width: 288px;
-}
-
-.resultname {
-  font-weight: 500;
-  font-size: 20px;
-  margin-top: 31px;
-  width: 221px;
-}
-
-.resulttext {
-  width: 238px;
-  font-weight: 400;
-  font-size: 15.4px;
-  line-height: 23px;
-  margin-top: 0px;
-}
-
-.interested-btn {
-  height: 46px;
-  width: 110px;
-  background: #252525;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  font-family: "Rajdhani";
-  cursor: pointer;
-}
-
-.interested-btn:hover {
-  background: black;
-}
-img {
-  width: inherit;
-  height: inherit;
-  object-fit: cover;
-  border-radius: 4px;
-}
-</style>
+<style scoped src="../styles/component-searchResults.css"></style>
 
 <script>
 export default {

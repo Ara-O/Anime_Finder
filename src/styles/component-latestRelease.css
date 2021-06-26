@@ -18,3 +18,18 @@
   margin-top: 17px;
   font-size: 16px;
 }
+
+@media (max-width: 520px) {
+  .imgcontainer {
+    height: 213px;
+  }
+
+  .releasename {
+    font-size: 17px;
+    width: 146px;
+  }
+
+  .releasedate {
+    font-size: 15px;
+  }
+}

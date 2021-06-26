@@ -4,7 +4,7 @@
       <div class="resultimg">
         <img :src="animeimg" alt="Anime Image" />
       </div>
-      <div>
+      <div class="bottomresult">
         <h3 class="resultname">{{ animename }}</h3>
         <h5 class="resulttext">
           {{ animedescr }}

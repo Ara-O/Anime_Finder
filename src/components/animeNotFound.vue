@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mainsect">
     <img src="../assets/404img.png" alt="Error image" class="img404" />
     <h3 class="notfoundtext">Anime not found</h3>
   </div>
@@ -17,6 +17,14 @@
   margin-top: -30px;
   font-size: 22px;
 }
-</style>
 
- 
+@media (max-width: 500px) {
+  .img404 {
+    width: 305px;
+  }
+
+  .mainsect {
+    height: 500px;
+  }
+}
+</style>

@@ -44,12 +44,6 @@
   cursor: pointer;
 }
 
-@media (max-width: 883px) {
-  .result {
-    width: 370px;
-  }
-}
-
 @media (max-width: 1363px) {
   .result {
     width: 620px;
@@ -58,11 +52,57 @@
 
 @media (max-width: 1129px) {
   .result {
-    width: 90vw;
+    width: 79vw;
     height: 100vh;
+    justify-content: space-between;
   }
 
   .searchSect {
     margin-bottom: 100px;
+  }
+
+  .resultcont {
+    width: 247px;
+  }
+
+  .result::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 1016px) {
+  .result::-webkit-scrollbar {
+    display: none;
+  }
+
+  .resultcont {
+    width: 230px;
+  }
+}
+
+@media (max-width: 1006) {
+  .result {
+    width: 83vw;
+  }
+}
+
+@media (max-width: 907px) {
+  .result {
+    column-gap: 101px;
+    row-gap: 32px;
+
+    justify-content: center;
+  }
+
+  .sorting {
+    display: none;
+  }
+}
+
+/* PHONES */
+
+@media (max-width: 500px) {
+  .resultcont {
+    width: 218px;
   }
 }

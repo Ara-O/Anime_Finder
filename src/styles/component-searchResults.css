@@ -47,9 +47,36 @@
 .interested-btn:hover {
   background: black;
 }
+
 img {
   width: inherit;
   height: inherit;
   object-fit: cover;
   border-radius: 4px;
+}
+
+@media (max-width: 1129px) {
+  .resultcont {
+    width: 225px;
+  }
+}
+
+@media (max-width: 500px) {
+  .resulttext {
+    width: 286px;
+    text-align: center;
+  }
+
+  .resultcont {
+    align-items: center;
+  }
+
+  .resultname {
+    width: 285px;
+    text-align: center;
+  }
+
+  .bottomresult {
+    text-align: center;
+  }
 }

@@ -33,6 +33,16 @@
   justify-content: space-evenly;
   column-gap: 62px;
 }
+
+@media (max-width: 520px) {
+  .main {
+    margin-left: 0px;
+  }
+
+  .releasessection {
+    column-gap: 29px;
+  }
+}
 </style>
 
 <script>
@@ -46,7 +56,7 @@ export default {
     return {
       releases: [],
 
-      text: "Loading....",
+      text: "Loading...This may take a while :D",
     };
   },
 

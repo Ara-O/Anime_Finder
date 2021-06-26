@@ -113,3 +113,49 @@ input {
     margin-top: 20px;
   }
 }
+
+/* PHONES */
+
+@media (max-width: 500px) {
+  .first-text {
+    font-size: 23px;
+    margin-top: 43px;
+  }
+
+  .inputfield {
+    height: 39px;
+    font-size: 15px;
+    width: 260px;
+  }
+
+  .search_categories {
+    padding: 10px 8px 11px 49px;
+    background: #fff;
+    border-radius: 9px;
+    margin-top: 23px;
+    width: 221px;
+  }
+
+  .search_categories-2 {
+    display: none;
+  }
+
+  .mainpage {
+    justify-content: none;
+  }
+
+  .searchSect {
+    margin-bottom: 70px;
+    margin-left: 13px;
+    width: 288px;
+  }
+
+  .resultname {
+    width: 199px;
+  }
+
+  .resultimg {
+    height: 218px;
+    width: 149px;
+  }
+}

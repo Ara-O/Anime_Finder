@@ -6,6 +6,9 @@
       <router-link to="/latestReleases" class="link"
         >Latest Releases</router-link
       >
+      <router-link to="/watchlist" class="link"
+        >My Watchlist</router-link
+      >
       <!-- <li><router-link>Anime News</router-link></li> -->
     </ul>
     <div class="phonenav--cont navbarAnimation">

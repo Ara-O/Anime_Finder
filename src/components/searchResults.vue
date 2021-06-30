@@ -9,11 +9,25 @@
         <h5 class="resulttext">
           {{ animedescr }}
         </h5>
-        <router-link to="/selectedanime">
-          <button class="interested-btn" @click="showSelectedAnime">
-            I'm Interested
-          </button>
-        </router-link>
+        <div class="routerlinks">
+          <router-link to="/selectedanime">
+            <button class="interested-btn" @click="showSelectedAnime">
+              I'm Interested
+            </button>
+          </router-link>
+          <router-link to="/watchlist">
+            <button class="interested-btn__2" @click="addtowaitlist">
+              <span class="addtowaitlist">
+                <img
+                  src="../assets/addwaitlist.png"
+                  alt="Add to waitlist"
+                  class="addtowaitlist"
+                  title="Add to watchlist"
+                />
+              </span>
+            </button>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -27,6 +41,7 @@ export default {
   data() {
     return {
       dataofanime: "",
+      copyofanime: {},
     };
   },
   methods: {
@@ -36,6 +51,8 @@ export default {
       this.$store.state.animeSearch = target_copy;
       this.$cookies.set("selectedAnime", this.$store.state.animeSearch);
     },
+
+    addtowaitlist() {},
   },
 };
 </script>

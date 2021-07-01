@@ -6,6 +6,7 @@ export default createStore({
     animeSearch: [],
     searchinprogress: true,
     currentList: false,
+    watchList: [],
   },
   mutations: {},
   actions: {},

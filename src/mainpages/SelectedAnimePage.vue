@@ -156,9 +156,16 @@ export default {
     console.log(this.anime);
     this.getNews();
   },
+
+  beforeRouteEnter(to, from, next) {
+    if (from.name === "Redirecting") {
+      console.log("made by clicking button");
+      next();
+    } else {
+      next("/");
+    }
+  },
 };
 </script>
 
-<style scoped src="../styles/selectedAnimePage.css">
-
-</style>
+<style scoped src="../styles/selectedAnimePage.css"></style>

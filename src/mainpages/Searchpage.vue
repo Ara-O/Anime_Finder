@@ -13,6 +13,7 @@
           :animedescr="animelist.synopsis"
           :animeimg="animelist.image_url"
           :anime="animelist"
+          @addtowaitlist="addwaitlist"
         ></component>
         <!-- <search-results
           v-for="animelist in startingList"
@@ -38,6 +39,7 @@
 import searchSect from "../components/searchsection.vue";
 import searchResults from "../components/searchResults.vue";
 import animeNotFound from "../components/animeNotFound.vue";
+
 const axios = require("axios").default;
 export default {
   name: "HelloWorld",
@@ -50,6 +52,7 @@ export default {
       descriptiontext: "Popular Animes",
       startingList: [],
       page: 1,
+      animeWatchlist: [],
     };
   },
 
@@ -103,6 +106,11 @@ export default {
           .then((res) => {
             this.updateState("Search Results");
             this.startingList = res.data.results;
+            console.log(this.startingList);
+            if (this.startingList.length === 0) {
+              this.$store.state.currentList = false;
+              this.$store.state.animefound = false;
+            }
           })
           .catch((err) => {
             this.handleError(err);
@@ -117,6 +125,17 @@ export default {
         top: 0,
         behavior: "smooth",
       });
+    },
+
+    addwaitlist(animebeingadded) {
+      this.animeWatchlist.push(Object.assign({}, animebeingadded));
+      localStorage.setItem("animelist", JSON.stringify(this.animeWatchlist));
+      console.log(JSON.parse(localStorage.getItem("animelist")));
+      // localStorage.setItem(
+      //   "animewatchlist",
+      //   JSON.stringify(this.animeWatchlist)
+      // );
+      // console.log(JSON.parse(localStorage.getItem("animewatchlist")));
     },
   },
 

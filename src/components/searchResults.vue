@@ -37,13 +37,14 @@
 <script>
 export default {
   props: ["animename", "animedescr", "animeimg", "anime"],
+  emits: ["addtowaitlist"],
   data() {
     return {
-      dataofanime: "",
+      dataofanime: {},
       copyofanime: {},
-      animeWatchlist: [],
     };
   },
+
   methods: {
     showSelectedAnime() {
       this.dataofanime = this.anime;
@@ -53,35 +54,7 @@ export default {
     },
 
     addtowaitlist() {
-      this.showSelectedAnime();
-      //Searchig for if anime already exists
-      if (
-        this.$store.state.watchList.find(
-          (anime) => anime.mal_id === this.dataofanime.mal_id
-        ) === undefined
-      ) {
-        this.$store.state.watchList.push(this.dataofanime);
-        this.animeWatchlist = this.$store.state.watchList;
-        console.log("Anime of that does not exist in file");
-      } else {
-        console.log("Anime exist");
-      }
-
-      // currentwatchitem.push(this.dataofanime);
-      // console.log(currentwatchitem[currentwatchitem.length - 1]);
-      // this.$store.state.watchList.forEach((anime) => {
-      //  });
-    },
-  },
-
-  watch: {
-    animeWatchlist() {
-      console.log("-------------------");
-      console.log(this.animeWatchlist);
-      this.$cookies.set(
-        "animewatchlist",
-        Object.assign({}, this.animeWatchlist)
-      );
+      this.$emit("addtowaitlist", this.anime);
     },
   },
 };

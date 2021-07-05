@@ -69,12 +69,14 @@ export default {
       loading: true,
     };
   },
+
   computed: {
     getPublishedDate() {
       const newdate = new Date(this.selectedArticle.publishedAt);
       return String(newdate).slice(0, -42);
     },
   },
+
   methods: {
     searchNews() {
       axios

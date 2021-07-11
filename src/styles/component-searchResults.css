@@ -85,6 +85,7 @@
 .routerlinks {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 img {
@@ -102,8 +103,10 @@ img {
 
 @media (max-width: 500px) {
   .resulttext {
-    width: 286px;
     text-align: center;
+    width: auto;
+    font-size: 14.5px;
+    line-height: 20px;
   }
 
   .resultcont {
@@ -111,11 +114,24 @@ img {
   }
 
   .resultname {
-    width: 285px;
+    width: 192px;
     text-align: center;
+    margin-left: 15px;
+    margin-top: 25px;
   }
 
   .bottomresult {
     text-align: center;
+  }
+
+  img {
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+  }
+
+  .resultimg {
+    height: 267px;
+    width: auto;
   }
 }

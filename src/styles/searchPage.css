@@ -61,6 +61,11 @@
     margin-bottom: 100px;
   }
 
+  /* .searchSectChange {
+    margin-bottom: 34px !important;
+    margin-top: -445px !important;
+  } */
+
   .resultcont {
     width: 247px;
   }
@@ -104,5 +109,9 @@
 @media (max-width: 500px) {
   .resultcont {
     width: 218px;
+  }
+
+  .searchSect {
+    margin-bottom: 38px;
   }
 }

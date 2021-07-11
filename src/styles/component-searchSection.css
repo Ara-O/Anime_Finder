@@ -100,6 +100,18 @@ input {
   background: black;
 }
 
+.minimize {
+  display: none;
+}
+
+.all {
+  transition: all 700ms ease-in-out;
+}
+
+.up {
+  margin-top: -462px;
+}
+
 @media (max-width: 883px) {
   .first-text {
     margin-top: 68px;
@@ -117,23 +129,28 @@ input {
 /* PHONES */
 
 @media (max-width: 500px) {
+  .loadingtext {
+    font-size: 13px;
+  }
+
   .first-text {
     font-size: 23px;
     margin-top: 43px;
+    margin-bottom: 26px;
   }
 
   .inputfield {
-    height: 39px;
-    font-size: 15px;
-    width: 260px;
+    height: 34px;
+    font-size: 13px;
+    width: 203px;
   }
 
   .search_categories {
-    padding: 10px 8px 11px 49px;
+    padding: 8px 0px 9px 28px;
     background: #fff;
     border-radius: 9px;
     margin-top: 23px;
-    width: 221px;
+    width: 189px;
   }
 
   .search_categories-2 {
@@ -146,7 +163,7 @@ input {
 
   .searchSect {
     margin-bottom: 70px;
-    margin-left: 13px;
+    margin-left: 47px;
     width: 288px;
   }
 
@@ -157,5 +174,22 @@ input {
   .resultimg {
     height: 218px;
     width: 149px;
+  }
+
+  .select select {
+    font-size: 13px;
+  }
+
+  .searchbtn {
+    height: 38px;
+    font-size: 13px;
+    width: 101px;
+  }
+
+  .minimize {
+    display: block;
+    font-weight: 400;
+    font-size: 14.5px;
+    cursor: pointer;
   }
 }

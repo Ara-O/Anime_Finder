@@ -1,7 +1,6 @@
 <template>
   <div class="mainpage">
     <searchSect @initiatingsearch="startSearch" class="searchSect"></searchSect>
-
     <div>
       <h3 class="sorting">{{ descriptiontext }}</h3>
       <div class="result">
@@ -131,6 +130,7 @@ export default {
       this.animeWatchlist.push(Object.assign({}, animebeingadded));
       localStorage.setItem("animelist", JSON.stringify(this.animeWatchlist));
       console.log(JSON.parse(localStorage.getItem("animelist")));
+
       // localStorage.setItem(
       //   "animewatchlist",
       //   JSON.stringify(this.animeWatchlist)

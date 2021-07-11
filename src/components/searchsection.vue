@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="all">
     <h3 class="first-text">Start your anime search</h3>
     <input
       type="text"
@@ -90,15 +90,20 @@
     </div>
     <h4 class="filterstext">More filters</h4>
     <button class="searchbtn" @click="startsearch">Start Search</button>
-    <h3 v-if="$store.state.searchinprogress" style="font-weight: 400">
+    <h3 class="minimize" @click="minimize">Minimize</h3>
+    <h3
+      v-if="$store.state.searchinprogress"
+      style="font-weight: 400"
+      class="loadingtext"
+    >
       Loading!
     </h3>
   </div>
 </template>
 
 <style scoped src="../styles/component-searchSection.css"></style>
-
 <script>
+import scrollUp from "../modules/minimize-animation.js";
 export default {
   emits: ["initiatingsearch"],
   data() {
@@ -121,6 +126,10 @@ export default {
     startsearch() {
       // console.log(this.chosenAnime);
       this.$emit("initiatingsearch", this.chosenAnime);
+    },
+
+    minimize() {
+      scrollUp("all");
     },
   },
 };

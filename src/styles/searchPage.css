@@ -114,4 +114,13 @@
   .searchSect {
     margin-bottom: 38px;
   }
+
+  .nextarrow {
+    width: 47px;
+    position: relative;
+    right: -4px;
+    height: 48px;
+    top: 50px;
+    cursor: pointer;
+  }
 }

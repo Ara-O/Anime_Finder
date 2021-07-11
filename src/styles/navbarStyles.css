@@ -67,6 +67,7 @@ a {
   .navbarAnimation {
     margin-left: -111px;
     margin-top: -160px;
+    position: fixed;
   }
 
   .links {

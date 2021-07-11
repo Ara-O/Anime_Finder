@@ -85,7 +85,6 @@
 .routerlinks {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 img {
@@ -133,5 +132,9 @@ img {
   .resultimg {
     height: 267px;
     width: auto;
+  }
+
+  .routerlinks {
+    justify-content: center;
   }
 }

@@ -124,7 +124,6 @@ export default {
 
   methods: {
     startsearch() {
-      // console.log(this.chosenAnime);
       this.$emit("initiatingsearch", this.chosenAnime);
     },
 

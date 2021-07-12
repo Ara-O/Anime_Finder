@@ -93,7 +93,7 @@ export default {
           this.animeNews = res.data.articles;
           // this.newsSearchNotStarted = false;
         })
-        .catch((err) => {
+        .catch(() => {
           this.loading = false;
         });
     },

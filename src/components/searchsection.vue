@@ -88,7 +88,6 @@
         </div>
       </div>
     </div>
-    <h4 class="filterstext">More filters</h4>
     <button class="searchbtn" @click="startsearch">Start Search</button>
     <h3 class="minimize" @click="minimize">Minimize</h3>
     <h3

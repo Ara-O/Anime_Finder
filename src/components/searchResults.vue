@@ -16,7 +16,11 @@
             </button>
           </router-link>
 
-          <button class="interested-btn__2" @click="addtowaitlist">
+          <button
+            class="interested-btn__2"
+            @click="addtowaitlist"
+            v-if="notalreadyadded"
+          >
             <span class="addtowaitlist">
               <img
                 src="../assets/addwaitlist.png"
@@ -42,6 +46,7 @@ export default {
     return {
       dataofanime: {},
       copyofanime: {},
+      notalreadyadded: true,
     };
   },
 
@@ -54,6 +59,7 @@ export default {
     },
 
     addtowaitlist() {
+      this.notalreadyadded = false;
       this.$emit("addtowaitlist", this.anime);
     },
   },

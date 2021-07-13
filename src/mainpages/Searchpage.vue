@@ -129,13 +129,8 @@ export default {
     addwaitlist(animebeingadded) {
       this.animeWatchlist.push(Object.assign({}, animebeingadded));
       localStorage.setItem("animelist", JSON.stringify(this.animeWatchlist));
-      console.log(JSON.parse(localStorage.getItem("animelist")));
-
-      // localStorage.setItem(
-      //   "animewatchlist",
-      //   JSON.stringify(this.animeWatchlist)
-      // );
-      // console.log(JSON.parse(localStorage.getItem("animewatchlist")));
+      // console.log(JSON.parse(localStorage.getItem("animelist")));
+      alert("Added to watchlist!");
     },
   },
 

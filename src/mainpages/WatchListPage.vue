@@ -1,24 +1,25 @@
 <template>
   <div>
     <div class="result">
-      <searchResults
-        v-for="list in lists"
-        :key="list.mal_id"
-        :animename="list.title"
-        :animedescr="list.synopsis"
-        :animeimg="list.image_url"
-        :anime="list"
-      ></searchResults>
+      <div class="mainsect" v-for="list in lists" :key="list.mal_id">
+        <div class="resultcont">
+          <div class="resultimg">
+            <img :src="list.image_url" alt="Anime Image" />
+          </div>
+          <div class="bottomresult">
+            <h3 class="resultname">{{ list.title }}</h3>
+            <h5 class="resulttext">
+              {{ list.synopsis }}
+            </h5>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import searchResults from "../components/searchResults.vue";
 export default {
-  components: {
-    searchResults,
-  },
   data() {
     return {
       lists: [],
@@ -37,15 +38,17 @@ export default {
   },
 };
 </script>
-
+<style scoped src="../styles/component-searchResults.css"></style>
 <style scoped>
 .result {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  /* -moz-column-gap: 21px; */
   column-gap: 21px;
+  /* column-gap: 21px; */
   flex-wrap: wrap;
-  margin-top: 131px;
-  height: 85vh;
+  margin-top: 101px;
+  /* height: 85vh; */
   overflow: hidden;
 }
 </style>

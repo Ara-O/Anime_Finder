@@ -1,5 +1,7 @@
 <template>
   <div class="all">
+    <h3 class="maximize" @click="maximize">Maximize</h3>
+
     <h3 class="first-text">Start your anime search</h3>
     <input
       type="text"
@@ -101,8 +103,9 @@
 </template>
 
 <style scoped src="../styles/component-searchSection.css"></style>
+
 <script>
-import scrollUp from "../modules/minimize-animation.js";
+import { scrollUp, scrollDown } from "../modules/minimize-animation.js";
 export default {
   emits: ["initiatingsearch"],
   data() {
@@ -127,7 +130,11 @@ export default {
     },
 
     minimize() {
-      scrollUp("all");
+      scrollUp("all", ".maximize");
+    },
+
+    maximize() {
+      scrollDown("all", ".maximize");
     },
   },
 };

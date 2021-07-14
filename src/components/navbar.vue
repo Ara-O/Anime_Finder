@@ -31,7 +31,6 @@ import navbarAnimation from "../modules/navbarAnimation";
 export default {
   mounted() {
     navbarAnimation(".hamburger", ".phonenav--cont");
- 
   },
 };
 </script>

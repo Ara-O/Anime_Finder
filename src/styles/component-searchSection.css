@@ -94,6 +94,7 @@ input {
   border-radius: 5px;
   font-family: "Rajdhani";
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .searchbtn:hover {
@@ -106,6 +107,17 @@ input {
 
 .up {
   margin-top: -462px;
+}
+
+.maximize {
+  position: fixed;
+  top: 8px;
+  right: 30px;
+  font-size: 14.5px;
+  font-weight: 400;
+  display: none;
+  opacity: 0;
+  transition: opacity 1000ms ease;
 }
 
 @media (max-width: 883px) {
@@ -130,19 +142,19 @@ input {
   }
 
   .first-text {
-    font-size: 23px;
+    font-size: 25px;
     margin-top: 43px;
     margin-bottom: 26px;
   }
 
   .inputfield {
-    height: 34px;
+    height: 39px;
     font-size: 13px;
-    width: 203px;
+    width: 210px;
   }
 
   .search_categories {
-    padding: 8px 0px 9px 28px;
+    padding: 11px 6px 11px 28px;
     background: #fff;
     border-radius: 9px;
     margin-top: 23px;

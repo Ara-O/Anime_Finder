@@ -29,7 +29,7 @@ a {
   display: none;
 }
 
-@media (max-width: 883px) {
+@media (max-width: 1083px) {
   .hamburger {
     display: block;
   }

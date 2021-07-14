@@ -16,6 +16,10 @@
             </button>
           </router-link>
 
+          <button class="outsidelink">
+            <a :href="anime.url" target="_blank"> Learn More </a>
+          </button>
+
           <button
             class="interested-btn__2"
             @click="addtowaitlist"

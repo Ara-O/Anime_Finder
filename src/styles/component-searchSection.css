@@ -142,19 +142,19 @@ input {
   }
 
   .first-text {
-    font-size: 25px;
+    font-size: 26px;
     margin-top: 43px;
     margin-bottom: 26px;
   }
 
   .inputfield {
-    height: 39px;
-    font-size: 13px;
-    width: 210px;
+    height: 41px;
+    font-size: 13.3px;
+    width: 218px;
   }
 
   .search_categories {
-    padding: 11px 6px 11px 28px;
+    padding: 12px 6px 12px 28px;
     background: #fff;
     border-radius: 9px;
     margin-top: 23px;
@@ -185,7 +185,7 @@ input {
   }
 
   .select select {
-    font-size: 13px;
+    font-size: 13.3px;
   }
 
   .searchbtn {

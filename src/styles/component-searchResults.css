@@ -94,16 +94,46 @@ img {
   border-radius: 4px;
 }
 
+.outsidelink {
+  display: none;
+}
+
 @media (max-width: 1129px) {
   .resultcont {
     width: 225px;
   }
 }
 
+@media (max-width: 1334px) {
+  .interested-btn {
+    display: none;
+  }
+
+  .outsidelink {
+    display: block;
+    height: 46px;
+    width: 110px;
+    background: #252525;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-family: "Rajdhani";
+    cursor: pointer;
+  }
+
+  .outsidelink:hover {
+    background: black;
+  }
+
+  .outsidelink a {
+    color: white;
+    text-decoration: none;
+  }
+}
 @media (max-width: 500px) {
   .resulttext {
     text-align: center;
-    width: auto;
+    width: 260px;
     font-size: 14.5px;
     line-height: 20px;
   }
@@ -115,12 +145,14 @@ img {
   .resultname {
     width: 192px;
     text-align: center;
-    margin-left: 15px;
     margin-top: 25px;
   }
 
   .bottomresult {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   img {
@@ -130,7 +162,7 @@ img {
   }
 
   .resultimg {
-    height: 267px;
+    height: 282px;
     width: auto;
   }
 

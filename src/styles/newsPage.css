@@ -85,6 +85,7 @@ h4.content {
 .extras {
   display: flex;
   column-gap: 30px;
+  align-items: flex-start;
 }
 
 .extrainfo {

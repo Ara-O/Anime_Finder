@@ -18,8 +18,8 @@
             v-for="animeNew in animeNews"
             :key="animeNew.id"
             :allnews="animeNew"
-            :synopsis="animeNew.description"
-            :img="animeNew.urlToImage"
+            :synopsis="animeNew.snippet"
+            :img="getThumbnail(animeNew.pagemap)"
             :title="animeNew.title"
             @selectedArticle="articleSelected"
           ></newsArticle>
@@ -36,16 +36,15 @@
           </div>
           <div v-else>
             <h3 class="articletitle">{{ selectedArticle.title }}</h3>
-            <h4 class="content">{{ selectedArticle.content }}</h4>
-            <a :href="selectedArticle.url" target="_blank"
+            <h4 class="content">{{ selectedArticle.snippet }}</h4>
+            <a :href="selectedArticle.formattedURL" target="_blank"
               ><button class="readon">Read on</button></a
             >
 
             <div class="extras">
               <div class="extrainfo">
-                Source: {{ selectedArticle.source.name }}
+                Source: {{ selectedArticle.displayLink }}
               </div>
-              <div class="extrainfo">Published At: {{ getPublishedDate }}</div>
             </div>
           </div>
         </div>
@@ -70,27 +69,26 @@ export default {
     };
   },
 
-  computed: {
-    getPublishedDate() {
-      const newdate = new Date(this.selectedArticle.publishedAt);
-      return String(newdate).slice(0, -42);
-    },
-  },
-
   methods: {
+    getThumbnail(data) {
+      console.log(data);
+      if (data.cse_image) {
+        return data.cse_image[0].src;
+      } else {
+        return "https://tse3.mm.bing.net/th?id=OIP.Ff4Xm0w1vjsZqI9BBZbKBwHaEK&pid=Api";
+      }
+    },
+
     searchNews() {
       axios
         .get(
-          `https://newsapi.org/v2/everything?q=${
-            this.newsSearch
-          }&apiKey=461d782f9ca64ec38148e156ce502307&language=en&page=${Number(
-            this.page
-          )}&pageSize=100`
+          `https://www.googleapis.com/customsearch/v1?key=AIzaSyCOHLs1kP6p8tcnhnJX90wFzji0o2NPiWw&cx=b09f9169eef29a298&imgType=photo&num=10&q=${this.newsSearch}&lr=lang_en"`
         )
         .then((res) => {
+          console.log(res);
           this.loading = false;
-          console.log(res.data.articles);
-          this.animeNews = res.data.articles;
+          this.animeNews = res.data.items;
+          console.log(res.data.items);
           // this.newsSearchNotStarted = false;
         })
         .catch(() => {
@@ -110,14 +108,13 @@ export default {
     var that = this;
     axios
       .get(
-        `https://newsapi.org/v2/everything?q=latest+anime&apiKey=461d782f9ca64ec38148e156ce502307&language=en&page=${Number(
-          that.page
-        )}&pageSize=100`
+        `https://www.googleapis.com/customsearch/v1?key=AIzaSyCOHLs1kP6p8tcnhnJX90wFzji0o2NPiWw&cx=b09f9169eef29a298&imgType=photo&num=10&q=latest%anime%news&lr=lang_en "
+`
       )
       .then((res) => {
         that.loading = false;
-        that.animeNews = res.data.articles;
-        console.log(res.data.articles);
+        that.animeNews = res.data.items;
+        console.log(res.data.items);
       })
       .catch((err) => {
         console.log(err);

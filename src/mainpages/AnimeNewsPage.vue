@@ -71,7 +71,6 @@ export default {
 
   methods: {
     getThumbnail(data) {
-      console.log(data);
       if (data.cse_image) {
         return data.cse_image[0].src;
       } else {
@@ -89,7 +88,7 @@ export default {
           this.loading = false;
           this.animeNews = res.data.items;
           console.log(res.data.items);
-          // this.newsSearchNotStarted = false;
+          this.newsSearchNotStarted = false;
         })
         .catch(() => {
           this.loading = false;
@@ -99,7 +98,6 @@ export default {
     articleSelected() {
       this.selectedArticle = this.$cookies.get("selectedArticle");
       this.newsSearchNotStarted = false;
-      console.log(this.selectedArticle);
     },
   },
 

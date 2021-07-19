@@ -16,9 +16,17 @@ export default {
   props: ["title", "img", "synopsis", "allnews"],
   emits: ["selectedArticle"],
 
+  data() {
+    return {
+      test: "",
+    };
+  },
+
   methods: {
     selectArticle() {
-      this.$cookies.set("selectedArticle", this.allnews);
+      this.test = JSON.parse(JSON.stringify(this.allnews));
+      this.$cookies.remove("selectedArticle");
+      this.$cookies.set("selectedArticle", this.test);
       this.$emit("selectedArticle");
     },
   },

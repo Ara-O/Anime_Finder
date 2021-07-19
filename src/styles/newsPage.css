@@ -48,6 +48,7 @@ input {
   width: 550px;
   overflow: auto;
   height: 650px;
+  padding-left: 10px;
 }
 
 .leftsection::-webkit-scrollbar {

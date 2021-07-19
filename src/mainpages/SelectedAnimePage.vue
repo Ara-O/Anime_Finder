@@ -29,7 +29,7 @@
         <div class="summary summ-2">
           <div class="viewers">
             <h3>Total Viewers</h3>
-            <h3 class="number">{{ anime.members }}</h3>
+            <h3 class="number">{{ anime.members.toLocaleString() }}</h3>
           </div>
         </div>
         <div class="summary summ-3">

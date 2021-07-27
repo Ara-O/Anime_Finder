@@ -73,7 +73,7 @@ export default {
       this.$store.state.animefound = false;
       this.descriptiontext = "";
       this.$store.state.searchinprogress = false;
-      console.log(err);
+      this.handleError(err);
     },
 
     startSearch(chosenAnime) {
@@ -105,7 +105,6 @@ export default {
           .then((res) => {
             this.updateState("Search Results");
             this.startingList = res.data.results;
-            console.log(this.startingList);
             if (this.startingList.length === 0) {
               this.$store.state.currentList = false;
               this.$store.state.animefound = false;
@@ -129,7 +128,6 @@ export default {
     addwaitlist(animebeingadded) {
       this.animeWatchlist.push(Object.assign({}, animebeingadded));
       localStorage.setItem("animelist", JSON.stringify(this.animeWatchlist));
-      // console.log(JSON.parse(localStorage.getItem("animelist")));
       alert("Added to watchlist!");
     },
   },
@@ -137,10 +135,8 @@ export default {
   computed: {
     renderedComponent() {
       if (this.$store.state.animefound) {
-        console.log("anime found");
         return searchResults;
       } else {
-        console.log("anime not found");
         return animeNotFound;
       }
     },

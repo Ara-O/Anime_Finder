@@ -66,6 +66,7 @@
             :description="animenew.snippet"
             :title="animenew.title"
             :link="animenew.url"
+            :image="animenew.pagemap"
           ></news>
         </div>
       </div>
@@ -119,47 +120,48 @@ export default {
   methods: {
     getNews() {
       var that = this;
-      const options = {
-        method: "GET",
-        url: "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/WebSearchAPI",
-        params: {
-          q: that.anime.title,
-          pageNumber: "1",
-          pageSize: "10",
-          autoCorrect: "true",
-        },
-        headers: {
-          "x-rapidapi-key":
-            "af5d8d5742msh534d84026431d68p158043jsn6b112d5a470f",
-          "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-        },
-      };
+      // const options = {
+      //   method: "GET",
+      //   url: "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/WebSearchAPI",
+      //   params: {
+      //     q: that.anime.title,
+      //     pageNumber: "1",
+      //     pageSize: "10",
+      //     autoCorrect: "true",
+      //   },
+      //   headers: {
+      //     "x-rapidapi-key":
+      //       "af5d8d5742msh534d84026431d68p158043jsn6b112d5a470f",
+      //     "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+      //   },
+      // };
 
+      // axios.request(options);
       axios
-        .request(options)
+        .get(
+          `https://www.googleapis.com/customsearch/v1?key=AIzaSyCOHLs1kP6p8tcnhnJX90wFzji0o2NPiWw&cx=b09f9169eef29a298&imgType=photo&num=10&q=${this.anime.title}&lr=lang_en`
+        )
         .then(function (response) {
-          let data = response.data.value;
-          // const filtereddata = data.filter((anime) => anime.image.url);
+          let data = response.data.items;
+          // // const filtereddata = data.filter((anime) => anime.image.url);
           that.newsloaded = false;
           that.animenews = data;
-          console.log(data);
-        })
-        .catch(function (error) {
-          console.error(error);
+          // console.log(data);
         });
+      //   .catch(function (error) {
+      //     console.error(error);
+      //   });
     },
   },
 
   mounted() {
     const animeData = this.$cookies.get("selectedAnime");
     this.anime = animeData;
-    console.log(this.anime);
     this.getNews();
   },
 
   beforeRouteEnter(to, from, next) {
     if (from.name === "Redirecting") {
-      console.log("made by clicking button");
       next();
     } else {
       next("/");

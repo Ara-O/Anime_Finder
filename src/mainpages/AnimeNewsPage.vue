@@ -81,13 +81,11 @@ export default {
     searchNews() {
       axios
         .get(
-          `https://www.googleapis.com/customsearch/v1?key=AIzaSyCOHLs1kP6p8tcnhnJX90wFzji0o2NPiWw&cx=b09f9169eef29a298&imgType=photo&num=10&q=${this.newsSearch}&lr=lang_en"`
+          `https://www.googleapis.com/customsearch/v1?key=AIzaSyCOHLs1kP6p8tcnhnJX90wFzji0o2NPiWw&cx=b09f9169eef29a298&imgType=photo&num=10&q=${this.newsSearch}&lr=lang_en`
         )
         .then((res) => {
-          console.log(res);
           this.loading = false;
           this.animeNews = res.data.items;
-          console.log(res.data.items);
           this.newsSearchNotStarted = false;
         })
         .catch(() => {
@@ -112,10 +110,9 @@ export default {
       .then((res) => {
         that.loading = false;
         that.animeNews = res.data.items;
-        console.log(res.data.items);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   },
 };

@@ -75,7 +75,6 @@ export default {
       .then(function (response) {
         that.text = "Latest Releases";
         that.releases = response.data.data;
-        console.log(response.data);
       })
       .catch(function (error) {
         console.error(error);

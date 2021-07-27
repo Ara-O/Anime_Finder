@@ -122,6 +122,10 @@ export default {
 
   mounted() {
     this.$store.state.searchinprogress = false;
+
+    window.document
+      .querySelector(".inputfield")
+      .addEventListener("change", this.startsearch);
   },
 
   methods: {

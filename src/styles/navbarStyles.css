@@ -29,6 +29,12 @@ a {
   display: none;
 }
 
+@media (max-width: 1140px) {
+  .second {
+    display: none;
+  }
+}
+
 @media (max-width: 1083px) {
   .hamburger {
     display: block;

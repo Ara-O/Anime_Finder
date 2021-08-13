@@ -2,7 +2,7 @@
   <nav>
     <ul>
       <router-link to="/search" class="link">Search</router-link>
-      <router-link to="/news" class="link">Anime News</router-link>
+      <router-link to="/news" class="link second">Anime News</router-link>
       <router-link to="/latestReleases" class="link"
         >Latest Releases</router-link
       >
@@ -12,7 +12,7 @@
     <div class="phonenav--cont navbarAnimation">
       <div class="links">
         <router-link to="/search" class="link2">Search</router-link>
-        <router-link to="/news" class="link2 second">Anime News</router-link>
+        <router-link to="/news" class="link2">Anime News</router-link>
         <router-link to="/latestReleases" class="link2"
           >Latest Releases</router-link
         >

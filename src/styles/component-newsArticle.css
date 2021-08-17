@@ -33,7 +33,7 @@
 .newsblock--img {
   background: white;
   height: 133px;
-  width: 237px;
+  max-width: 237px;
   margin-top: 41px;
   object-fit: cover;
   border-radius: 11px;
@@ -45,3 +45,9 @@
   font-size: 20px;
   width: 243px;
 }
+
+@media (max-width: 1250px) {
+  .newsblock {
+    margin-right: 6px;
+  }
+} ;

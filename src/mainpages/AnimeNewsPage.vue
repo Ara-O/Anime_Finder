@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="main">
+    <div
+      class="main"
+      style="margin-top: 115px; display: flex; justify-content: space-around"
+    >
       <section class="leftsection">
         <h3 class="searchtext">Search for anime news</h3>
         <div class="searchsect">

@@ -12,6 +12,13 @@
             class="inputfield"
             placeholder="Anime Name ( Optional )"
             v-model="newsSearch"
+            style="
+              height: 44px;
+              width: 330px;
+              border-radius: 9px;
+              border: 0px;
+              box-shadow: 0px 0px 5px #d5d5d5;
+            "
           />
           <button class="button" @click="searchNews">Search</button>
         </div>

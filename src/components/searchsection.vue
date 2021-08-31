@@ -94,10 +94,10 @@
     <h3 class="minimize" @click="minimize">Minimize</h3>
     <h3
       v-if="$store.state.searchinprogress"
-      style="font-weight: 400"
+      style="font-weight: 400; width: 370px; line-height: 30px"
       class="loadingtext"
     >
-      Loading!
+      Loading...The API has been slow lately so this may take a while
     </h3>
   </div>
 </template>

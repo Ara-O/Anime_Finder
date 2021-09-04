@@ -121,6 +121,9 @@ input {
 }
 
 @media (max-width: 883px) {
+  .loadingtext {
+    width: 236px;
+  }
   .first-text {
     margin-top: 68px;
   }

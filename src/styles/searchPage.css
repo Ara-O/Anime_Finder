@@ -95,8 +95,12 @@
   .result {
     column-gap: 101px;
     row-gap: 32px;
-
+    overflow-x: hidden;
     justify-content: center;
+  }
+
+  .loadingtext {
+    width: 236px;
   }
 
   .sorting {

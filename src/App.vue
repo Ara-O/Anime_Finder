@@ -18,7 +18,8 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
 body {
-  background: #e8e8e8;
+  background: linear-gradient(45deg, #0e0f12, #21232c);
   font-family: Rajdhani;
+  color: white;
 }
 </style>

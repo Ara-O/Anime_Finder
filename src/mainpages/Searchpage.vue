@@ -38,7 +38,7 @@
 import searchSect from "../components/searchsection.vue";
 import searchResults from "../components/searchResults.vue";
 import animeNotFound from "../components/animeNotFound.vue";
-
+import * as firebaseServices from "../services/firebaseService"
 const axios = require("axios").default;
 export default {
   name: "HelloWorld",
@@ -125,10 +125,12 @@ export default {
       });
     },
 
+    // !HERE ------- 
+
     addwaitlist(animebeingadded) {
-      this.animeWatchlist.push(Object.assign({}, animebeingadded));
-      localStorage.setItem("animelist", JSON.stringify(this.animeWatchlist));
-      alert("Added to watchlist!");
+      firebaseServices.storeUserData(animebeingadded)
+      console.log(animebeingadded)
+      console.log("anime being added")
     },
   },
 

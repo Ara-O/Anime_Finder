@@ -30,7 +30,7 @@
             :allnews="animeNew"
             :synopsis="animeNew.snippet"
             :img="getThumbnail(animeNew.pagemap)"
-            :title="animeNew.title"
+            :title="animeNew?.title"
             @selectedArticle="articleSelected"
           ></newsArticle>
         </div>

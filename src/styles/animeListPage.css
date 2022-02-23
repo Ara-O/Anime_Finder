@@ -1,0 +1,95 @@
+.overlay {
+    background-color: rgba(0, 0, 0, 0.76);
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    display: flex;
+    left: 0px;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    z-index: 4;
+  }
+  
+  .main {
+    margin-left: 42px;
+    margin-top: 70px;
+  }
+  
+  .divisor {
+    width: 50px;
+    margin-left: inherit;
+    background: black;
+    margin-bottom: 30px;
+  }
+  
+  .signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .signup-popup {
+    height: auto;
+    width: 326px;
+    background: white;
+    z-index: 5;
+    border-radius: 3px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 35px 40px;
+  }
+  
+  .signup-title {
+    font-size: 29px;
+    margin-top: 0px;
+  }
+  
+  .signup-input-texts {
+    font-weight: 400;
+    font-size: 17px;
+  }
+  
+  .signup-input-fields{
+        height: 34px;
+      width: 212px;
+      border-radius: 3px;
+      border: solid 1px gray;
+      padding-left: 11px;
+      color: darkslategray;
+     box-sizing: border-box;
+}
+ 
+.signup-btn{
+    margin-top: 30px;
+    height: 40px;
+    width: 98px;
+    background: #252525;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: "Rajdhani";
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: all 250ms linear;
+}
+
+.signup-btn:hover{
+  box-shadow: 0px 0px 2px gray;
+}
+
+.signup-helpers{
+    font-weight: 400;
+    font-size: 14px;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer
+}
+
+.cancel-icon{
+  width: 26px;
+  padding-top: 2px;
+  float: right;
+  cursor: pointer;}

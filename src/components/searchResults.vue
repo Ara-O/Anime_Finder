@@ -23,7 +23,7 @@
           <button
             class="interested-btn__2"
             @click="addtowaitlist"
-            v-if="notalreadyadded"
+            v-if="userIsSignedIn"
           >
             <span class="addtowaitlist">
               <img
@@ -43,6 +43,9 @@
 <style scoped src="../styles/component-searchResults.css"></style>
 
 <script>
+import * as firebaseService from "../services/firebaseService";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 export default {
   props: ["animename", "animedescr", "animeimg", "anime"],
   emits: ["addtowaitlist"],
@@ -51,6 +54,7 @@ export default {
       dataofanime: {},
       copyofanime: {},
       notalreadyadded: true,
+      userIsSignedIn: true,
     };
   },
 
@@ -67,5 +71,17 @@ export default {
       this.$emit("addtowaitlist", this.anime);
     },
   },
+
+  mounted(){
+    let that = this;
+    const auth = getAuth();
+    auth.onAuthStateChanged(function (user) {
+        if (user) {
+            that.userIsSignedIn = true;
+        } else {
+            that.userIsSignedIn  = false;
+        }
+    });
+   }
 };
 </script>

@@ -10,15 +10,13 @@
               type="text"
               class="signup-input-fields"
               ref="email"
-              value="Oladipoara@gmail.com"
-            />
+             />
             <h3 class="signup-input-texts" ref="userpassword">Password:</h3>
             <input
               class="signup-input-fields"
               type="password"
               ref="password"
-              value="cbrehhehe"
-            />
+             />
             <button @click="registerUser" class="signup-btn">Sign Up</button>
             <h3 class="signup-helpers" @click="this.$router.go(-1)">
               Go back to previous page

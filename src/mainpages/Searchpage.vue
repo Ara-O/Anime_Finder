@@ -40,6 +40,7 @@ import searchResults from "../components/searchResults.vue";
 import animeNotFound from "../components/animeNotFound.vue";
 import * as firebaseServices from "../services/firebaseService"
 const axios = require("axios").default;
+
 export default {
   name: "HelloWorld",
   components: {
@@ -130,7 +131,7 @@ export default {
     addwaitlist(animebeingadded) {
       firebaseServices.storeUserData(animebeingadded)
       console.log(animebeingadded)
-      console.log("anime being added")
+
     },
   },
 
@@ -148,7 +149,6 @@ export default {
     // Searching for if someone has started their search, if not, then it loads default. If so, when the page loads
     //it gets the last searched value and shows it as the results
     // this.$cookies.set("searchinganime", "");
-
     if (this.$cookies.get("searchinganime")) {
       this.startSearch(this.$cookies.get("searchinganime"));
     } else {

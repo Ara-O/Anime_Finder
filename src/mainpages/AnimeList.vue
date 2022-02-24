@@ -3,16 +3,8 @@
     <section v-if="notSignedIn">
       <div class="overlay">
         <div class="signup">
-          <div class="signup-popup">
-            <!-- <img src="../assets/cancelicon.png" alt="Cancel icon" class="cancel-icon" @click="cancelPopup"> -->
+          <div class="signup-popup" v-if="noAccount">
             <h2 class="signup-title">Sign Up!</h2>
-            <hr class="divisor" />
-            <h3 class="signup-input-texts" ref="username">Username:</h3>
-            <input
-              type="text"
-              class="signup-input-fields"
-              value="Ara Oladipo"
-            />
             <h3 class="signup-input-texts" ref="useremail">Email:</h3>
             <input
               type="text"
@@ -31,15 +23,62 @@
             <h3 class="signup-helpers" @click="this.$router.go(-1)">
               Go back to previous page
             </h3>
-            <h3 class="signup-helpers">Already have an account</h3>
+            <h3 class="signup-helpers" @click="this.noAccount = false">
+              Already have an account
+            </h3>
+          </div>
+          <!-- !SIGN IN -->
+          <div class="signin-popup" v-else>
+            <!-- <img src="../assets/cancelicon.png" alt="Cancel icon" class="cancel-icon" @click="cancelPopup"> -->
+            <h2 class="signup-title">Sign In!</h2>
+            <h3 class="signup-input-texts" ref="useremail">Email:</h3>
+            <input
+              type="text"
+              class="signup-input-fields"
+              ref="email"
+              value="Oladipoara@gmail.com"
+            />
+            <h3 class="signup-input-texts" ref="userpassword">Password:</h3>
+            <input
+              class="signup-input-fields"
+              type="password"
+              ref="password"
+              value="cbrehhehe"
+            />
+            <button @click="logInUser" class="signup-btn">Sign In</button>
+            <h3 class="signup-helpers" @click="this.$router.go(-1)">
+              Go back to previous page
+            </h3>
+            <h3 class="signup-helpers" @click="this.noAccount = true">
+              I don't have an account
+            </h3>
           </div>
         </div>
       </div>
       <h3>You need to sign up first!</h3>
     </section>
+    <!-- USER IS LOGGED IN -->
     <section v-else>
-      <h3>You can now add animes to your wishlist by clicking the plus icon on the main page</h3>
-      <button @click="signOut">Sign out</button>
+      <h3 class="animelist-instruction">
+        You can now add animes to your wishlist by clicking the plus icon on the
+        main page
+      </h3>
+      <button @click="signOut" class="sign-out">Sign out</button>
+      <div class="anime-lists-full">
+        <div
+          v-for="animeList in animeLists"
+          :key="animeList.id"
+          class="anime-list"
+        >
+          <img
+            :src="animeList.image_url"
+            alt="image url"
+            class="anime-list-img"
+          />
+          <h3 class="anime-list-title">{{ animeList.title }}</h3>
+          <button @click="removeAnimeFromWatchlist(animeList)" class="remove-btn">Remove</button>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -59,24 +98,26 @@ export default {
   data() {
     return {
       notSignedIn: true,
+      animeLists: {},
+      userIsSigningIn: false,
+      noAccount: true,
     };
   },
+ 
 
   methods: {
+    //Check whether user is signe din and update status
     checkSignedInStatus() {
       const auth = getAuth();
       let that = this;
       auth.onAuthStateChanged(function (user) {
         if (user) {
-          console.log("User is already signed in");
-          console.log(user);
           that.notSignedIn = false;
+          that.getAnimeList();
         } else {
           if (firebaseServices.checkStatus() === true) {
-            console.log("the user is here, but signed in immediately")
             that.notSignedIn = false;
           } else {
-            console.log('not signed in at all')
             that.notSignedIn = true;
           }
         }
@@ -84,17 +125,25 @@ export default {
     },
 
     registerUser() {
-      console.log("registering user");
       firebaseServices.registerUser(this);
+    },
+
+    logInUser() {
+      firebaseServices.signInUser(this)
     },
 
     signOut() {
       firebaseServices.logOut();
+      this.checkSignedInStatus();
     },
 
-    // cancelPopup(){
-    //   document.querySelector(".overlay").style.display = "none"
-    // }
+    getAnimeList() {
+      firebaseServices.getUserAnimeList(this);
+    },
+
+    removeAnimeFromWatchlist(animeList){
+      firebaseServices.removeAnime(animeList)
+    }
   },
 
   mounted() {

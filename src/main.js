@@ -6,13 +6,13 @@ import VueCookies from "vue3-cookies";
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBgvnosCycsNIBPUtkRthltbtAYo2DKi60",
-    authDomain: "anime-search-7accc.firebaseapp.com",
-    projectId: "anime-search-7accc",
-    storageBucket: "anime-search-7accc.appspot.com",
-    messagingSenderId: "1016413402117",
-    appId: "1:1016413402117:web:f6e28ba536bca82648986c",
-    measurementId: "G-WBR9FR6HSP"
+    apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+    authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.VUE_APP_PROJECT_ID,
+    // storageBucket: accc.appspot.com",
+    // messagingSenderId: ,
+    // appId: ":web:f6e28ba536bca82648986c",
+    // measurementId: 
 };
 
 const app = initializeApp(firebaseConfig)

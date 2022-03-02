@@ -34,14 +34,14 @@
               type="text"
               class="signup-input-fields"
               ref="email"
-              value="Oladipoara@gmail.com"
+              value=""
             />
             <h3 class="signup-input-texts" >Password:</h3>
             <input
               class="signup-input-fields"
               type="password"
               ref="password"
-              value="cbrehhehe"
+              value=""
             />
             <button @click="logInUser" class="signup-btn">Sign In</button>
             <h3 class="signup-helpers" @click="this.$router.go(-1)">

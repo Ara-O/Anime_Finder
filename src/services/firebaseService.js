@@ -57,7 +57,7 @@ export function logOut() {
     const auth = getAuth();
     signOut(auth).then(() => {
         // Sign-out successful.
-        console.log("signed out")
+        console.log("signed out");
     }).catch((error) => {
         alert(error.message)
     });

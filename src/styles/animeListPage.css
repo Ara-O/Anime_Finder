@@ -105,7 +105,8 @@
 
 .animelist-instruction{
 font-weight: 500;
-display: inline;
+display: inline-block;
+padding-right: 55px;
 }
 
 .anime-lists-full{
@@ -131,4 +132,14 @@ display: inline;
 
 .sign-out{
   margin-left: 30px;
+}
+
+@media(max-width: 700px){
+  .anime-lists-full{
+    display: flex;
+    column-gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+  }
 }

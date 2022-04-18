@@ -130,8 +130,7 @@ export default {
 
     addwaitlist(animebeingadded) {
       firebaseServices.storeUserData(animebeingadded)
-      console.log(animebeingadded)
-
+      alert("This anime has been added to your watchlist")
     },
   },
 

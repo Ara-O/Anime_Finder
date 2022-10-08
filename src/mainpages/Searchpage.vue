@@ -156,7 +156,7 @@ export default {
           `https://api.jikan.moe/v4/anime?q=&order_by=score&sort=desc`
         )
         .then((res) => {
-          this.startingList = res.data.results.slice(1);
+          this.startingList = res.data.data;
         })
         .catch((err) => {
           this.handleError(err);

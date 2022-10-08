@@ -4,7 +4,7 @@
       <div class="anime--desc__sect">
         <button class="button back-btn" @click="$router.go(-1)">Go back</button>
         <div class="animeimg">
-          <img :src="anime.image_url" alt="" class="animeimg--img" />
+          <img :src="anime?.images?.jpg?.image_url" alt="" class="animeimg--img" />
         </div>
         <h3 class="title">{{ anime.title }}</h3>
         <h4 class="descrheader">Description</h4>
@@ -21,9 +21,7 @@
           <div class="summ-1_extension">
             <h3 class="dates">Started -</h3>
             <h4>{{ getStartDate }}</h4>
-            <div class="hr"></div>
-            <h3 class="dates">Ended -</h3>
-            <h4>{{ getEndDate }}</h4>
+          
           </div>
         </div>
         <div class="summary summ-2">
@@ -64,7 +62,7 @@
             v-for="animenew in animenews"
             :key="animenew.id"
             :description="animenew.snippet"
-            :title="animenew.title"
+            :title="animenew?.title"
             :link="animenew.url"
             :image="animenew.pagemap"
           ></news>
@@ -102,8 +100,8 @@ export default {
     },
 
     getStartDate() {
-      const newdate = new Date(this.anime.start_date);
-      return String(newdate).slice(0, -42);
+      const newdate = new Date(this.anime.aired.string);
+      return String(newdate).slice(0, -43);
     },
 
     getEndDate() {
@@ -155,8 +153,10 @@ export default {
   },
 
   mounted() {
-    const animeData = this.$cookies.get("selectedAnime");
-    this.anime = animeData;
+    // const animeData = this.$cookies.get("selectedAnime");
+    // this.anime = animeData;
+
+    console.log(this.anime)
     this.getNews();
   },
 

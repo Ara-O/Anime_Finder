@@ -10,7 +10,7 @@
           :key="animelist.mal_id"
           :animename="animelist.title"
           :animedescr="animelist.synopsis"
-          :animeimg="animelist.image_url"
+          :animeimg="animelist?.images?.jpg?.image_url"
           :anime="animelist"
           @addtowaitlist="addwaitlist"
         ></component>
@@ -74,7 +74,6 @@ export default {
       this.$store.state.animefound = false;
       this.descriptiontext = "";
       this.$store.state.searchinprogress = false;
-      this.handleError(err);
     },
 
     startSearch(chosenAnime) {
@@ -87,11 +86,12 @@ export default {
       if (name.trim() === "") {
         axios
           .get(
-            `https://api.jikan.moe/v3/search/anime?q=&order_by=score&sort=desc&page=${this.page}&rated=${rating}&genre=${genre}&type=${preferredtype}&status=${status}`
+            `https://api.jikan.moe/v4/anime?q=&order_by=score&sort=desc&page=${this.page}&rating=${rating}&genre=${genre}&type=${preferredtype}&status=${status}`
           )
           .then((res) => {
+            console.log(res.data.data)
             this.updateState("Sorting by popular shows");
-            this.startingList = res.data.results.slice(1);
+            this.startingList = res.data.data;
           })
           .catch((err) => {
             this.handleError(err);
@@ -101,11 +101,11 @@ export default {
       if (name) {
         axios
           .get(
-            `https://api.jikan.moe/v3/search/anime?q=${name}&page=${this.page}&genre=${genre}&type=${preferredtype}&status=${status}&rated=${rating}`
+            `https://api.jikan.moe/v4/anime?q=${name}&page=${this.page}&genre=${genre}&type=${preferredtype}&status=${status}&rating=${rating}`
           )
           .then((res) => {
             this.updateState("Search Results");
-            this.startingList = res.data.results;
+            this.startingList = res.data.data;
             if (this.startingList.length === 0) {
               this.$store.state.currentList = false;
               this.$store.state.animefound = false;
@@ -153,7 +153,7 @@ export default {
     } else {
       axios
         .get(
-          `https://api.jikan.moe/v3/search/anime?q=&order_by=score&sort=desc`
+          `https://api.jikan.moe/v4/anime?q=&order_by=score&sort=desc`
         )
         .then((res) => {
           this.startingList = res.data.results.slice(1);

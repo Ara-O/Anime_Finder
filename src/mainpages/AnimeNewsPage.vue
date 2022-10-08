@@ -45,7 +45,7 @@
             />
           </div>
           <div v-else>
-            <h3 class="articletitle">{{ selectedArticle.title }}</h3>
+            <h3 class="articletitle">{{ selectedArticle?.title }}</h3>
             <h4 class="content">{{ selectedArticle.snippet }}</h4>
             <a :href="selectedArticle.formattedURL" target="_blank"
               ><button class="readon">Read on</button></a
@@ -96,6 +96,7 @@ export default {
         .then((res) => {
           this.loading = false;
           this.animeNews = res.data.items;
+          console.log( this.animeNews)
           this.newsSearchNotStarted = false;
         })
         .catch(() => {

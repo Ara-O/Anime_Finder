@@ -6,8 +6,8 @@
       </div>
       <div class="bottomresult">
         <h3 class="resultname">{{ animename }}</h3>
-        <h5 class="resulttext">
-          {{ animedescr }}
+        <h5 class="resulttext" :title="animedescr">
+          {{ animedescr?.substring(0, 200) }}...
         </h5>
         <div class="routerlinks">
           <router-link to="/selectedanime">
@@ -61,6 +61,7 @@ export default {
   methods: {
     showSelectedAnime() {
       this.dataofanime = this.anime;
+      console.log("anime ", this.anime)
       const target_copy = Object.assign({}, this.dataofanime);
       this.$store.state.animeSearch = target_copy;
       this.$cookies.set("selectedAnime", this.$store.state.animeSearch);

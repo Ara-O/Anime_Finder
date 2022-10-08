@@ -25,8 +25,10 @@ export default {
   methods: {
     selectArticle() {
       this.test = JSON.parse(JSON.stringify(this.allnews));
+      console.log("seectted article: ", this.test)
+      let that = this;
       this.$cookies.remove("selectedArticle");
-      this.$cookies.set("selectedArticle", this.test);
+      this.$cookies.set("selectedArticle", Object.assign({}, that.test));
       this.$emit("selectedArticle");
     },
   },
